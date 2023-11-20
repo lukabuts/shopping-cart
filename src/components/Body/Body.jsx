@@ -54,7 +54,7 @@ export default function Body({
   return (
     <div className="item" key={id}>
       <div className="img-div">
-        <img src={img} alt={desc} />
+        <img src={img} alt={desc} loading="lazy" />
       </div>
       <div className="details">
         <h3>{name}</h3>

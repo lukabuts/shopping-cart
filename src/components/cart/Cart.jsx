@@ -46,7 +46,7 @@ export default function Cart({
                   <i className="bi bi-x-lg"></i>
                 </div>
                 <div className="img-div">
-                  <img src={item.img} alt="" />
+                  <img src={item.img} alt={item.desc} loading="lazy" />
                 </div>
                 <div className="details">
                   <div className="name-price">
