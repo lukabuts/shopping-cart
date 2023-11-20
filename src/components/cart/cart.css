@@ -102,6 +102,15 @@
 }
 
 @media (max-width: 540px) {
+  .cart-container {
+    margin-top: 20px;
+    gap: 15px;
+  }
+
+  .cart-container .total h3 {
+    font-size: 20px;
+  }
+
   .cart-container .item {
     width: 300px;
     height: 100px;

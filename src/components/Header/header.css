@@ -24,6 +24,11 @@ header .cart-div {
   cursor: pointer;
 }
 
+header .cart-div svg {
+  width: 30px;
+  height: 30px;
+}
+
 header .cart-div .count {
   position: absolute;
   top: -18px;
@@ -38,4 +43,29 @@ header .cart-div .count {
   min-width: 25px;
   height: 25px;
   border-radius: 5px;
+}
+
+@media (max-width: 540px) {
+  header {
+    padding: 15px 25px;
+  }
+
+  header .cart-div {
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  header .cart-div svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  header .cart-div .count {
+    top: -13px;
+    right: -13px;
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 20px;
+    height: 20px;
+  }
 }

@@ -64,7 +64,14 @@ export default function Body({
       )}
       <div className="item" key={id}>
         <div className="img-div">
-          <img src={img} alt={desc} loading="lazy" />
+          <img
+            src={img}
+            alt={desc}
+            loading="lazy"
+            onLoad={(e) => {
+              e.target.className = "loaded";
+            }}
+          />
         </div>
         <div className="details">
           <h3>{name}</h3>

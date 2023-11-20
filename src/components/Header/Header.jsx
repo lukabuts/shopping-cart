@@ -27,8 +27,6 @@ export default function Header({ allItemsCount }) {
         <div className="cart-div">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
             fill="currentColor"
             className="bi bi-cart2"
             viewBox="0 0 16 16"
