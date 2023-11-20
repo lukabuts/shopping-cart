@@ -43,7 +43,7 @@ export default function CartPage({
             Coming Soon...
           </div>
           <div className="total">
-            <h3>Total Price: {totalPrice}</h3>
+            <h3>Total Price: ${totalPrice}</h3>
           </div>
           <div className="checkout-clear-btns">
             <button
