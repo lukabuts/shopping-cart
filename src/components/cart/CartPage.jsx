@@ -3,6 +3,7 @@ import Cart from "./Cart";
 import { useState, useEffect } from "react";
 import { myData } from "../Data/data";
 import "./cart.css";
+import { Link } from "react-router-dom";
 
 export default function CartPage({
   setAllItemsCount,
@@ -33,7 +34,7 @@ export default function CartPage({
 
   return (
     <div className="cart-container">
-      {basket.length > 0 && (
+      {allItemsCount > 0 && (
         <>
           <div
             className={
@@ -71,7 +72,16 @@ export default function CartPage({
           </div>
         </>
       )}
-      {basket.length === 0 && <h1>No Items Here</h1>}
+      {allItemsCount === 0 && (
+        <>
+          <h1>No Items Here</h1>
+          <Link to="/">
+            <button type="button" className="btn btn-danger">
+              Go Back
+            </button>
+          </Link>
+        </>
+      )}
       {basket
         .filter((x) => x.count !== 0)
         .map((item) => (
