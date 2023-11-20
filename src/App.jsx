@@ -1,20 +1,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
-import Cart from "./components/cart/Cart";
 import "./app.css";
 import { myData } from "./components/Data/data";
+import CartPage from "./components/cart/CartPage";
 
 function App() {
-  const [allItemsCount, setAllItemsCount] = useState(JSON.parse(localStorage.getItem('allCount')) || 0);
-  const [ basket, setBasket ] = useState(JSON.parse(localStorage.getItem('localstorageData')) || [])
+  const [allItemsCount, setAllItemsCount] = useState(
+    JSON.parse(localStorage.getItem("allCount")) || 0
+  );
+  const [basket, setBasket] = useState(
+    JSON.parse(localStorage.getItem("localstorageData")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("allCount", JSON.stringify(allItemsCount));
+  }, [allItemsCount]);
 
   return (
     <>
       <Router>
-        <Header allItemsCount={allItemsCount} />
+        <Header allItemsCount={allItemsCount} basket={basket} />
         <Routes>
           <Route
             path="/"
@@ -41,26 +49,12 @@ function App() {
           <Route
             path="/cart"
             element={
-              <>
-              <div className="cart-container">
-                {
-                  basket.filter(x => x.count !== 0).map(item => {
-                    return (
-                      <Cart 
-                      id={item.id}
-                      count={item.count}
-                      key={crypto.randomUUID()}
-                      setAllItemsCount={setAllItemsCount}
-                      allItemsCount={allItemsCount}
-                      basket={basket}
-                      setBasket={setBasket}
-                    />
-                    )
-
-                  })
-                }
-              </div>
-              </>
+              <CartPage
+                setAllItemsCount={setAllItemsCount}
+                allItemsCount={allItemsCount}
+                basket={basket}
+                setBasket={setBasket}
+              />
             }
           />
         </Routes>

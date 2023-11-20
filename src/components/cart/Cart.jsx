@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { myData } from "../Data/data";
-import { useState, useEffect } from "react";
-import "./cart.css";
+import { useState } from "react";
 
 export default function Cart({
   id,
@@ -10,16 +8,12 @@ export default function Cart({
   setAllItemsCount,
   allItemsCount,
   basket,
+  myData,
 }) {
   const localStorageData =
     JSON.parse(localStorage.getItem("localstorageData")) || [];
   const item = localStorageData.find((item) => item.id === id);
   const [elementCount, setElementCount] = useState(item ? item.count : 0);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    localStorage.setItem("allCount", JSON.stringify(allItemsCount));
-  }, [allItemsCount]);
 
   function pushBasket(type) {
     let search = basket.find((x) => x.id === id);
@@ -34,27 +28,8 @@ export default function Cart({
     localStorage.setItem("localstorageData", JSON.stringify(basket));
   }
 
-  useEffect(() => {
-    let calculatedTotalPrice = 0;
-
-    basket.forEach((a) => {
-      const id = a.id;
-      if (a.count > 0) {
-        const data = myData.find((x) => x.id === id);
-        if (data) {
-          calculatedTotalPrice += data.price * a.count;
-        }
-      }
-    });
-
-    setTotalPrice(calculatedTotalPrice);
-  }, [basket, myData]);
-
   return (
     <>
-      <div className="total">
-        <p>Total Price: {totalPrice}</p>
-      </div>
       <div className="item">
         {myData.map((item) => {
           if (item.id === id) {

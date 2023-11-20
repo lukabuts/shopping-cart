@@ -14,13 +14,10 @@ export default function Body({
   basket,
   setBasket,
 }) {
-  const localStorageData = JSON.parse(localStorage.getItem('localstorageData')) || [];
-  const item = localStorageData.find(item => item.id === id);
+  const localStorageData =
+    JSON.parse(localStorage.getItem("localstorageData")) || [];
+  const item = localStorageData.find((item) => item.id === id);
   const [elementCount, setElementCount] = useState(item ? item.count : 0);
-
-  useEffect(() => {
-    localStorage.setItem("allCount", JSON.stringify(allItemsCount))
-  }, [allItemsCount])
 
   let search = basket.find((x) => x.id === id);
 
@@ -34,10 +31,9 @@ export default function Body({
         },
       ]);
     }
-  }, [elementCount])
+  }, [elementCount]);
 
-  function pushBasket(type){
-    
+  function pushBasket(type) {
     if (search === undefined) {
       setBasket((basket) => [
         ...basket,
@@ -46,12 +42,12 @@ export default function Body({
           count: elementCount,
         },
       ]);
-    } else if(type === 'plus') {
+    } else if (type === "plus") {
       search.count++;
-    } else if(type === 'minus'){
+    } else if (type === "minus") {
       search.count--;
     }
-    
+
     localStorage.setItem("localstorageData", JSON.stringify(basket));
   }
 
@@ -65,14 +61,14 @@ export default function Body({
         <p>{desc}</p>
         <div className="more-info">
           <h4>$ {price}</h4>
-          <div>
+          <div className="quantity-buttons">
             <button
               className="minus-btn"
               onClick={() => {
                 if (elementCount === 0) return;
                 setAllItemsCount(allItemsCount - 1);
                 setElementCount(elementCount - 1);
-                pushBasket('minus');
+                pushBasket("minus");
               }}
             >
               -
@@ -83,7 +79,7 @@ export default function Body({
               onClick={() => {
                 setAllItemsCount(allItemsCount + 1);
                 setElementCount(elementCount + 1);
-                pushBasket('plus');
+                pushBasket("plus");
               }}
             >
               +

@@ -1,55 +1,39 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px 40px;
-    margin-top: 40px;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px 40px;
+  margin-top: 40px;
 }
 
-.container .item{
-    width: 225px;
-    border: 1px solid black;
-    border-radius: 10px;
-    overflow: hidden;
+.container .item {
+  width: 225px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.container .item .img-div{
-    width: 223px;
-    height: 223px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.container .item .img-div {
+  width: 223px;
+  height: 223px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.container .item .img-div img{
-    object-fit: cover;
-    object-position: center;
-    width: 223px;
+.container .item .img-div img {
+  object-fit: cover;
+  object-position: center;
+  width: 223px;
 }
 
-.container .item .details{
-    padding: 5px 10px;
+.container .item .details {
+  padding: 5px 10px;
 }
 
-.container .item .details .more-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.container .item .details .more-info div{
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    user-select: none;
-}
-
-.container .item .details .more-info button{
-    font-size: 30px;
-    color: red;
-}
-
-.container .item .details .more-info button.plus-btn{
-    color: green;
+.container .item .details .more-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
