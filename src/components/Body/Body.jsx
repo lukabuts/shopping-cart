@@ -18,6 +18,7 @@ export default function Body({
     JSON.parse(localStorage.getItem("localstorageData")) || [];
   const item = localStorageData.find((item) => item.id === id);
   const [elementCount, setElementCount] = useState(item ? item.count : 0);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   let search = basket.find((x) => x.id === id);
 
@@ -31,6 +32,7 @@ export default function Body({
         },
       ]);
     }
+    setPageLoaded(true);
   }, [elementCount]);
 
   function pushBasket(type) {
@@ -52,41 +54,50 @@ export default function Body({
   }
 
   return (
-    <div className="item" key={id}>
-      <div className="img-div">
-        <img src={img} alt={desc} loading="lazy" />
-      </div>
-      <div className="details">
-        <h3>{name}</h3>
-        <p>{desc}</p>
-        <div className="more-info">
-          <h4>$ {price}</h4>
-          <div className="quantity-buttons">
-            <button
-              className="minus-btn"
-              onClick={() => {
-                if (elementCount === 0) return;
-                setAllItemsCount(allItemsCount - 1);
-                setElementCount(elementCount - 1);
-                pushBasket("minus");
-              }}
-            >
-              -
-            </button>
-            {elementCount}
-            <button
-              className="plus-btn"
-              onClick={() => {
-                setAllItemsCount(allItemsCount + 1);
-                setElementCount(elementCount + 1);
-                pushBasket("plus");
-              }}
-            >
-              +
-            </button>
+    <>
+      {!pageLoaded && (
+        <div className="loading-page">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
+      <div className="item" key={id}>
+        <div className="img-div">
+          <img src={img} alt={desc} loading="lazy" />
+        </div>
+        <div className="details">
+          <h3>{name}</h3>
+          <p>{desc}</p>
+          <div className="more-info">
+            <h4>$ {price}</h4>
+            <div className="quantity-buttons">
+              <button
+                className="minus-btn"
+                onClick={() => {
+                  if (elementCount === 0) return;
+                  setAllItemsCount(allItemsCount - 1);
+                  setElementCount(elementCount - 1);
+                  pushBasket("minus");
+                }}
+              >
+                -
+              </button>
+              {elementCount}
+              <button
+                className="plus-btn"
+                onClick={() => {
+                  setAllItemsCount(allItemsCount + 1);
+                  setElementCount(elementCount + 1);
+                  pushBasket("plus");
+                }}
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
