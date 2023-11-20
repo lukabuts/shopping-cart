@@ -85,7 +85,7 @@ export default function Cart({
                     </button>
                   </div>
                   <div className="total-price">
-                    <h4>{item.price * count}</h4>
+                    <h4>$ {item.price * count}</h4>
                   </div>
                 </div>
               </>
