@@ -61,11 +61,11 @@ header .cart-div .count {
   }
 
   header .cart-div .count {
-    top: -13px;
-    right: -13px;
-    font-size: 18px;
+    top: -12px;
+    right: -12px;
+    font-size: 14px;
     font-weight: 500;
-    min-width: 20px;
-    height: 20px;
+    min-width: 19px;
+    height: 19px;
   }
 }
