@@ -33,5 +33,3 @@ A responsive shopping cart website built using React, Vite, and Bootstrap. Users
    ```bash
    npm run dev
 
-
-
