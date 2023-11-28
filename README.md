@@ -20,7 +20,18 @@ A responsive shopping cart website built using React, Vite, and Bootstrap. Users
 
    ```bash
    git clone https://github.com/lukabuts/shopping-cart.git
+
+2. Navigate to the project directory:
+   ```bash
    cd shopping-cart
+
+3. Install dependencies:
+   ```bash
    npm install
+   
+4. Start the development server:
+   ```bash
    npm run dev
+
+
 
